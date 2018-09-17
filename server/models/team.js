@@ -1,15 +1,16 @@
 import mongoose from 'mongoose';
+import MoodUser from './moodUser';
 const Schema = mongoose.Schema;
 
 const teamSchema = new Schema({
   name: { type: 'String', required: true },
   dateAdded: { type: 'Date', default: Date.now, required: true },
-  dateUpdated: { type: 'Date', required: true },
-  happinessLevels: { [
+  dateUpdated: { type: 'Date', required: false },
+  happinessLevels: [ {
   		dateAdded: {type: 'Date'},
-  		HappinessLevel: { type: 'int'}, 
-  		] },
-  users: { [Schema.Types.User] },
+  		happinessLevel: { type: 'number'} 
+  		} ] ,
+  moodUsers: [Schema.ObjectId]
 });
 
 export default mongoose.model('Team', teamSchema);

@@ -2,8 +2,8 @@
   "name": "react-authentication",
   "version": "1.0.0",
   "engines": {
-    "node": "4.4.3",
-    "npm": "4.2.0"
+    "node": "8.4.0",
+    "npm": "5.3.0"
   },
   "description": "",
   "main": "index.js",

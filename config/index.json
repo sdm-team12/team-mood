@@ -1,0 +1,6 @@
+{
+    "dbUri": "mongodb://localhost:27017",
+    "jwtSecret": "qwertyx",
+    "FB_ID": "FACEBOOKID",
+    "FB_Secret": "FACEBOOKSECRET"
+}

@@ -1,5 +1,5 @@
 {
-    "dbUri": "admin.Rohit123@ds111993.mlab.com:11993/heroku_0k0cjl55",
+    "dbUri": "admin:Rohit123@ds111993.mlab.com:11993/heroku_0k0cjl55",
     "jwtSecret": "qwertyx",
     "FB_ID": "FACEBOOKID",
     "FB_Secret": "FACEBOOKSECRET"

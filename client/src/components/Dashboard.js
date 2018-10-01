@@ -63,7 +63,7 @@ export default class Dashboard extends Component {
       
         <CardTitle
           title="Dashboard"
-          subtitle="User Hapiness Index."
+          subtitle="User Happiness Index."
         />
         {this.props.secretData && <CardText style={{ fontSize: '16px', color: 'green' }}>Hello, {this.props.secretData}</CardText>}
         <HappyIndexForm onFormSubmit={this.getSuccessPage} />

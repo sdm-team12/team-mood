@@ -50,7 +50,7 @@ export default class NoteList extends Component {
                 <Card className="container" style={{
                     width: '70%' }}>
                         <CardHeader
-                            title="Thank You For Filing Survey"
+                            title="Thank You For Filling Survey"
                             />
                     </Card>
             );

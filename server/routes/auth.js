@@ -163,34 +163,6 @@ router.post('/login', (req, res, next) => {
 });
 
 
-/* FACEBOOK */
-
-// Redirect the user to Facebook for authentication.  When complete,
-// Facebook will redirect the user back to the application at
-//     /auth/facebook/callback
-router.get('/facebook', passport.authenticate('facebook'));
-
-// Facebook will redirect the user to this URL after approval.  Finish the
-// authentication process by attempting to obtain an access token.  If
-// access was granted, the user will be logged in.  Otherwise,
-// authentication has failed.
-router.get('/facebook/callback',
-  passport.authenticate('facebook', { successRedirect: '/auth/success', failureRedirect: '/'}), function(req, res) {
-      var user = req.user;
-      var token = token;
-      // Need to accept three parameters here: err, token, user
-      // Token is signed in passport-facebook.js and then passed here, where it's returned in the JSON response.... shit maybe not. Might have to store it with the user data
-      
-      //res.json({ user });
-      console.log(user);
-      console.log("Authenticated?");
-      console.log(req.isAuthenticated());
-      // redirect client to URL with details as parameters
-      //res.redirect('/success/auth?token=' + user.jwtToken + '&id=' + user._id);
-      //res.redirect('/');
-      //res.redirect('http://localhost:8000/auth-success.html' + user.jwtToken + '&id=' + user._id);
-  });
-
 router.get('/logout', (req, res) => {
     req.logout();
     console.log(req.isAuthenticated());

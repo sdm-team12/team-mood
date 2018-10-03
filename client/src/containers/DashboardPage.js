@@ -7,7 +7,8 @@ class DashboardPage extends React.Component {
         super(props);
 
         this.state = {
-            secretData: ''
+            secretData: '',
+           
         };
     }
 
@@ -31,7 +32,8 @@ class DashboardPage extends React.Component {
 
     render() {
         return (
-            <Dashboard secretData={this.state.secretData} />
+            <Dashboard 
+            secretData={this.state.secretData} />
         );
     }
 }

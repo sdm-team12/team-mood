@@ -4,6 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Auth from '../modules/Auth';
 import ImagePicker from 'react-image-picker';
 import 'react-image-picker/dist/index.css'
+import NoteList from './note-list';
 
 //import images from local
 import img1 from './images/200.jpg'
@@ -20,7 +21,9 @@ export default class HappyIndexForm extends Component {
     constructor(props) {
         super(props);
         
-        this.state = { term: '', image: null, team_image: null };
+        
+
+        this.state = { term: '', image: null, team_image: null, message: '' };
         
         this.onInputChange = this.onInputChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -41,7 +44,7 @@ export default class HappyIndexForm extends Component {
     }
     
     onSubmit(event) {
-        event.preventDefault();
+        // event.preventDefault();
         
         console.log("Submit: " + this.state.term);
         
@@ -61,9 +64,12 @@ export default class HappyIndexForm extends Component {
         xhr.addEventListener('load', () => {
             if (xhr.status === 200) {
                 // success
-                
+                console.log(xhr.response);
                 // set a message
                 localStorage.setItem('successMessage', xhr.response.message);
+                this.setState({
+                    message: xhr.response.message
+                });
                 
                 // make a redirect
                 //this.context.router.replace('/login');
@@ -101,7 +107,6 @@ export default class HappyIndexForm extends Component {
             images={imageList.map((image, i) => ({src: image, value: i}))}
             onPick={this.onPickTeamImage}
             />
-            
             <div>                
             <br/>
             </div>
@@ -113,6 +118,9 @@ export default class HappyIndexForm extends Component {
             </div>
             </form>
             <br/>
+            <div>
+                <NoteList message={this.state.message} />
+            </div>
             </div>
         );
     }

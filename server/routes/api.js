@@ -7,8 +7,7 @@ const router = new express.Router();
 
 router.get('/dashboard', (req, res) => {
     console.log("response"+res);
-    res.status(200).json({
-        
+    res.status(200).json({ 
         message: "You're authorized to see this dashboard"
     });
 });
@@ -20,12 +19,22 @@ router.post('/happiness', (req, res) => {
         selfHappiness: req.body.selfHappiness,
         teamHappiness: req.body.teamHappiness
     });
+
     // console.log(req);
     // console.log(submission);
 
     submission.save(function (err, data) {
-        if (err) return console.error(err);
-        console.log(data);
+        if (err) return console.error(err); else 
+        res.status(200).json({
+            userData: submission,
+        });
+    });
+    
+});
+
+router.get('/thank-you', (req, res) => {
+    res.status(200).json({
+        message: "Thank You For Filling Survey",
     });
 });
 

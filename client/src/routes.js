@@ -5,6 +5,7 @@ import LoginPage from './containers/LoginPage.js';
 import SignUpPage from './containers/SignUpPage.js';
 import Auth from './modules/Auth';
 import ProviderAuthenticated from './components/provider-authenticated.js';
+import ThankYouPage from './containers/ThankYouPage.js';
 
 const routes = {
   // base component (wrapper for the whole application).
@@ -16,6 +17,17 @@ const routes = {
       getComponent: (location, callback) => {
         if (Auth.isUserAuthenticated()) {
           callback(null, DashboardPage);
+        } else {
+          callback(null, HomePage);
+        }
+      }
+    },
+
+    {
+      path: '/thankyou',
+      getComponent: (location, callback) => {
+        if (Auth.isUserAuthenticated()) {
+          callback(null, ThankYouPage);
         } else {
           callback(null, HomePage);
         }

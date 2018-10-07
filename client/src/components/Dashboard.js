@@ -42,6 +42,22 @@ export default class Dashboard extends Component {
     });
     xhr.send();
     this.setState({ notes: ' '  });
+
+    // create an AJAX request
+    xhr.open('post', '/api/emailSurvey');
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.setRequestHeader('Authorization', `bearer ${Auth.getToken()}`);
+    xhr.responseType = 'json';
+    xhr.addEventListener('load', () => {
+        if (xhr.status === 200) {
+            //email Sent
+        } else {
+            // failure
+            const errors = xhr.response.errors ? xhr.response.errors : {};
+            errors.summary = xhr.response.message;
+        }
+    });
+    xhr.send();
   }
 
   getUserInfo() {

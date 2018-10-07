@@ -1,5 +1,5 @@
 {
-    "dbUri": "heroku_0k0cjl55:8an6i0qafgurrld32t3ne3qlec@ds111993.mlab.com:11993/heroku_0k0cjl55",
+    "dbUri": "mongodb://heroku_0k0cjl55:8an6i0qafgurrld32t3ne3qlec@ds111993.mlab.com:11993/heroku_0k0cjl55",
     "jwtSecret": "qwertyx",
     "FB_ID": "FACEBOOKID",
     "FB_Secret": "FACEBOOKSECRET"

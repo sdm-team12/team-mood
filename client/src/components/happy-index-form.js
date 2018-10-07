@@ -84,7 +84,7 @@ export default class HappyIndexForm extends Component {
         return (
             <div>
             <form onSubmit={this.onSubmit} className="input-group">
-            <p><b>Please select an image to indicate how happy you are about your work?</b></p>
+            <p><b>Please select an image to indicate how happy you are about your work.</b></p>
             <div>
             <ImagePicker 
             images={imageList.map((image, i) => ({src: image, value: i}))}
@@ -95,7 +95,7 @@ export default class HappyIndexForm extends Component {
             </div>
             </div>
             <br/>
-            <p><b>Please select an image to indicate how happy you think the team is about the work?</b></p>
+            <p><b>Please select an image to indicate how happy you think the team is about the work.</b></p>
             <div>
             <ImagePicker 
             images={imageList.map((image, i) => ({src: image, value: i}))}

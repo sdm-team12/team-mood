@@ -1,58 +1,37 @@
 import React, { Component } from 'react';
 
-import { Card, CardTitle, CardText, CardActions, CardHeader } from 'material-ui/Card';
-import RefreshIndicator from 'material-ui/RefreshIndicator';
+import { Card, CardText } from 'material-ui/Card';
 
-
-
-const spinnerStyle = {
-  container: {
-    position: 'relative',
-  },
-  refresh: {
-    display: 'inline-block',
-    position: 'relative',
-  },
-};
 
 export default class NoteList extends Component {
     constructor(props) {
         super(props);
 
-        this.state = { notes: '' };
+        this.state = { message: ''  };
 
-        this.renderNotes = this.renderNotes.bind(this);
+        this.renderMessage = this.renderMessage.bind(this);
     }
 
-    renderNotes() {
-        if (this.props.notes.length == 0) {
+    renderMessage() {
+        if (this.props.message == 'Thank') {
             return (
-                <Card className="container" style={{
-                    width: '70%' }}>
-                        <CardHeader
-                            title=""
-                            />
-                    </Card>
+                <div>
+                   
+                        </div>
+                
             );
         }
         
-        if (this.props.notes) {
-            // return this.props.notes.map((note) => {
-            //     return (
-            //         <Card className="container" key={note._id}>
-            //             <CardHeader
-            //                 title={note.note}
-            //                 />
-            //         </Card>
-            //     );
-            // })
+        if (this.props.message) {
+
             return (
-                <Card className="container" style={{
-                    width: '70%' }}>
-                        <CardHeader
-                            title="Thank You For Filling Survey"
-                            />
-                    </Card>
+                
+                <div>
+                    {/* {console.log(this.props.message)} */}
+                    <Card className="container" style={{
+                        width: '70%' }}> <CardText style={{ fontSize: '16px', color: 'green' }}>{this.state.message}</CardText> </Card>
+                        </div>
+                    
             );
         }
     }
@@ -60,7 +39,7 @@ export default class NoteList extends Component {
     render() {
         return (
             <div>
-                {this.renderNotes()}
+                {this.renderMessage()}
             </div>
         );
     }

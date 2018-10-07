@@ -1,7 +1,9 @@
 const express = require('express');
+const sgMail = require('@sendgrid/mail');
 
 // Import data models
 var HappinessFact = require('../models/happinessFact');
+const surveyTemplate = require('./../services/emailTemplate/surveyTemplate');
 
 const router = new express.Router();
 
@@ -37,6 +39,31 @@ router.get('/successPage', (req, res) => {
     });
 });
 
+// create new survey- /api/surveys/new
+router.post('/emailSurvey', async(req, res) => {
+    // Send an Email
+    try {
+        // const user_name = `Rohit Dang`;
+        // const mailer = new Mailer(surveyTemplate(user_name));
+        // const response = await mailer.send();
+        sgMail.setApiKey("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");
+        const msg = {
+            to: 'rohit.dang@icloud.com',
+            from: 'feedback@team-mood.com',
+            subject: 'Survey: How happy are you?',
+            html: '<html> <body><div style="text-align: center;"><h3>Hi Rohit!</h3><p>It\'s time to fill the surey to indicate your and team\'s happiness.</p><p>Click <a href="http://localhost:8000/">here</a> to select your happiness level</p><br><div><p>Regards,</p><p>Team Mood</p></div></div></body></html>',
+        };
+        const response = sgMail.send(msg);
+
+        res.send(response);
+    } catch (e) {
+        console.log(e);
+        res.status(422).send(e)
+    }
 
 
-module.exports = router;
+});
+
+
+
+module.exports = router;    

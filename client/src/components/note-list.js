@@ -11,7 +11,9 @@ export default class NoteList extends Component {
     }
 
     renderMessage() {
+
         if (this.props.message == '') {
+
             return (
                 <div>
                    
@@ -28,6 +30,7 @@ export default class NoteList extends Component {
                     {/* {console.log(this.props.message)} */}
                     <Card className="container" style={{
                         width: '70%' }}> <CardText style={{ fontSize: '16px', color: 'green' }}>{this.props.message}</CardText> </Card>
+
                         </div>
                     
             );

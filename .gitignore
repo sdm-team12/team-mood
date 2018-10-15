@@ -1,6 +1,11 @@
 # Dependency directories
 node_modules
+<<<<<<< HEAD
 *.config.*
+=======
+config
+
+>>>>>>> 34842e1945de3fb4c90c542c9fdcce9957202f01
 # Build/Generate directories
 build
 dist

@@ -35,14 +35,9 @@ export default class Dashboard extends Component {
     xhr.addEventListener('load', () => {
         if (xhr.status === 200) {
             console.log(xhr.response);
-            this.setState({
-              message: xhr.response
-          });
-          console.log(this.state.message);
         }
     });
     xhr.send();
-    this.setState({ message: ' '  });
   }
 
   getUserInfo() {
@@ -53,7 +48,8 @@ export default class Dashboard extends Component {
   }
 
   getThankYouPage() {  
-        // create an AJAX request
+     
+        event.preventDefault() 
         const xhr = new XMLHttpRequest();
         xhr.open('get', '/api/thank-you');
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -67,8 +63,7 @@ export default class Dashboard extends Component {
               errors: {},
               message: xhr.response.message
             });
-    
-            this.context.router.replace('/thankyou');
+            
           } else {
             // failure
     
@@ -107,9 +102,9 @@ export default class Dashboard extends Component {
           subtitle="User Happiness Index."
         />
         
-        {this.props.secretData && <CardText style={{ fontSize: '16px', color: 'green' }}>Hello, {this.props.secretData}</CardText>
+        {this.props.secretData && <CardText style={{ fontSize: '16px', color: 'green' }}>Hello, {this.props.secretData} {}</CardText>
         }
-        {this.props.secretData && <HappyIndexForm onFormSubmit={this.getThankYouPage} />}
+        {this.props.secretData && <HappyIndexForm onFormSubmit={this.getThankYouPage} message={this.state.message}/>}
       </Card>
       <NoteList message={this.state.message} />
       

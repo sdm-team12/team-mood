@@ -34,7 +34,7 @@ router.post('/happiness', (req, res) => {
 
 router.get('/thank-you', (req, res) => {
     res.status(200).json({
-        message: "Thank You For Filling Survey",
+        message: "Thank You For Filling The Survey",
     });
 });
 

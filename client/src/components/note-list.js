@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PropTypes, Component } from 'react';
 
 import { Card, CardText } from 'material-ui/Card';
 
@@ -6,8 +6,6 @@ import { Card, CardText } from 'material-ui/Card';
 export default class NoteList extends Component {
     constructor(props) {
         super(props);
-
-        this.state = { message: ''  };
 
         this.renderMessage = this.renderMessage.bind(this);
     }
@@ -29,7 +27,7 @@ export default class NoteList extends Component {
                 <div>
                     {/* {console.log(this.props.message)} */}
                     <Card className="container" style={{
-                        width: '70%' }}> <CardText style={{ fontSize: '16px', color: 'green' }}>{this.state.message}</CardText> </Card>
+                        width: '70%' }}> <CardText style={{ fontSize: '16px', color: 'green' }}>{this.props.message}</CardText> </Card>
                         </div>
                     
             );
@@ -44,3 +42,6 @@ export default class NoteList extends Component {
         );
     }
 }
+NoteList.propTypes = {
+    message: PropTypes.string.isRequired
+  };

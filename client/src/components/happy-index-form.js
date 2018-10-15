@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React, { PropTypes, Component } from 'react';
 // import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Auth from '../modules/Auth';
 import ImagePicker from 'react-image-picker';
 import 'react-image-picker/dist/index.css'
-import NoteList from './note-list';
 
 //import images from local
 import img1 from './images/200.jpg'
@@ -21,34 +20,29 @@ export default class HappyIndexForm extends Component {
     constructor(props) {
         super(props);
         
+        this.state = { image: null, team_image: null, disabled: true };
         
-
-        this.state = { term: '', image: null, team_image: null, message: '' };
-        
-        this.onInputChange = this.onInputChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.onPick = this.onPick.bind(this);
         this.onPickTeamImage = this.onPickTeamImage.bind(this);
     }
     
-    onInputChange(term) {
-        this.setState({ term });
-    }
-    
     onPick(image) {
-        this.setState({image})
+        this.setState({image: image});
+        if(this.state.team_image && !this.props.message) {
+            this.setState({ disabled: false });
+        }
     }
 
     onPickTeamImage(team_image) {
-        this.setState({ team_image })
+        this.setState({ team_image });
+        if(this.state.image && !this.props.message) {
+            this.setState({ disabled: false });
+        }
     }
     
     onSubmit(event) {
-        // event.preventDefault();
-        
-        console.log("Submit: " + this.state.term);
-        
-        
+        event.preventDefault() 
         // create a string for an HTTP body message
         const userID = encodeURIComponent(Auth.getUser());
         const selfHappiness = this.state.image.value;
@@ -67,12 +61,6 @@ export default class HappyIndexForm extends Component {
                 console.log(xhr.response);
                 // set a message
                 localStorage.setItem('successMessage', xhr.response.message);
-                this.setState({
-                    message: xhr.response.message
-                });
-                
-                // make a redirect
-                //this.context.router.replace('/login');
             } else {
                 // failure
                 
@@ -81,9 +69,8 @@ export default class HappyIndexForm extends Component {
             }
         });
         xhr.send(formData);
-        
+        this.setState({ term: '', image: null, team_image: null, disabled: true  });
         this.props.onFormSubmit();
-        this.setState({ term: '', image: null, team_image: null  });
     }
     
     render() {
@@ -114,14 +101,21 @@ export default class HappyIndexForm extends Component {
             <br/>
             
             <div className="input-group-btn">
-            <RaisedButton label="Submit" type="submit" primary={true} />
+            <RaisedButton 
+                label="Submit" 
+                type="submit" 
+                disabled={this.state.disabled}
+                primary={true} />
             </div>
             </form>
             <br/>
             <div>
-                <NoteList message={this.state.message} />
             </div>
             </div>
         );
     }
 }
+
+HappyIndexForm.propTypes = {
+    message: PropTypes.string.isRequired
+  };

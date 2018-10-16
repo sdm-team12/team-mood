@@ -1,0 +1,30 @@
+version: '3.4'
+services:
+  web:
+    build:
+      context: ./
+      dockerfile: DockerFile
+      target: development
+    depends_on:
+      - db
+    ports:
+      - "${WEB_PORT:-8000}:8000"
+    volumes:
+      - ./client:/usr/src/app/client
+      - ./config:/usr/src/app/config
+      - ./server:/usr/src/app/server
+      - ./index.js:/usr/src/app/index.js
+      - ./package.json:/usr/src/app/package.json
+      - ./package-lock.json:/usr/src/app/package-lock.json
+      - ./webpack.config.js:/usr/src/app/webpack.config.js
+    environment:
+      NODE_ENV: development
+      MONGO_URL: mongodb://heroku_0k0cjl55:8an6i0qafgurrld32t3ne3qlec@ds111993.mlab.com:11993/heroku_0k0cjl55
+    stdin_open: true
+    tty: true
+  db:
+    image: mongo:latest
+    volumes:
+      - dbdata:/data/db
+volumes:
+  dbdata:

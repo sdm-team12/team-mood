@@ -3,8 +3,6 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const passport = require('passport');
-const config = require('./config');
-const path = require('path');
 const port = process.env.PORT || 8000
 //const path = require('path');
 
@@ -12,9 +10,8 @@ var User = require('./server/models/user');
 
 // Connect to the database and load models
 // ORIGINAL
-require('./server/models').connect(config.dbUri);
+require('./server/models').connect(process.env.MONGO_URL || 'mongodb://heroku_0k0cjl55:8an6i0qafgurrld32t3ne3qlec@ds111993.mlab.com:11993/heroku_0k0cjl55');
 // NEW
-//require('./server/models').connect(process.env.MONGODB_URI);
 
 const app = express();
 
@@ -35,7 +32,6 @@ app.use(session({
 // Pass the passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
-
 // ISSUE - I think these are fucked up, they don't seem to be saving the user to a session. When I try to call it later it returns null 
 passport.serializeUser(function(user, done) {
   console.log("serializeUser called");
@@ -54,10 +50,8 @@ passport.deserializeUser(function(_id, done) {
 // Load Passport strategies
 const localSignupStrategy = require('./server/passport/local-signup');
 const localLoginStrategy = require('./server/passport/local-login');
-const FacebookStrategy = require('./server/passport/passport-facebook');
 passport.use('local-signup', localSignupStrategy);
 passport.use('local-login', localLoginStrategy);
-passport.use('facebook', FacebookStrategy);
 
 // Pass the authentication checker middleware
 const authCheckMiddleware = require('./server/middleware/auth-check');

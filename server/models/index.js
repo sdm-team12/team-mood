@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 module.exports.connect = (uri) => {
-    mongoose.connect(uri);
+    mongoose.connect(uri, { useNewUrlParser: true });
     // Plug in to the promise library
     mongoose.Promise = global.Promise;
 
@@ -10,6 +10,9 @@ module.exports.connect = (uri) => {
         process.exit(1);
     });
 
+    
     // Load models
     require('./user');
+    require('./team');
+    require('./happinessFact');
 }

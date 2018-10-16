@@ -1,0 +1,24 @@
+FROM node:8 as base
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+EXPOSE 8000
+
+FROM base as development
+ENV NODE_ENV development
+COPY package.json package-lock.json ./
+RUN npm install
+COPY  index.js webpack.config.js ./
+COPY client ./client
+COPY server ./server
+CMD ["npm", "start"]
+
+FROM development as build
+ENV NODE_ENV=production
+RUN npm run build && npm run build:server
+
+FROM base as production
+ENV NODE_ENV=production
+COPY package.json package-lock.json ./
+RUN npm install --production
+COPY index.js ./
+CMD ["npm", "run", "start:prod"]

@@ -3,7 +3,6 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const passport = require('passport');
-const config = require('./config');
 const port = process.env.PORT || 8000
 //const path = require('path');
 
@@ -11,7 +10,7 @@ var User = require('./server/models/user');
 
 // Connect to the database and load models
 // ORIGINAL
-require('./server/models').connect(config.dbUri);
+require('./server/models').connect(process.env.MONGO_URL || 'mongodb://heroku_0k0cjl55:8an6i0qafgurrld32t3ne3qlec@ds111993.mlab.com:11993/heroku_0k0cjl55');
 // NEW
 
 const app = express();

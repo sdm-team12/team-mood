@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const User = require('mongoose').model('User');
 const config = require('../../config');
-var ObjectId = require('mongodb').ObjectID;
+var ObjectId = require('mongoose').Types.ObjectId;
 
 
 /**

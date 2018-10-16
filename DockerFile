@@ -9,6 +9,7 @@ COPY package.json package-lock.json ./
 RUN npm install
 COPY  index.js webpack.config.js ./
 COPY client ./client
+COPY config ./config
 COPY server ./server
 CMD ["npm", "start"]
 

@@ -29,7 +29,7 @@
     "client-sessions": "^0.7.0",
     "cookie-parser": "^1.4.3",
     "css-loader": "^0.23.1",
-    "express": "^4.14.1",
+    "express": "^4.16.4",
     "express-session": "^1.15.1",
     "file-loader": "2.0.0",
     "jquery": "^3.3.1",

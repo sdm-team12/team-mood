@@ -5,7 +5,7 @@ class Mailer extends helper.Mail {
     constructor(template) {
         super();
 
-        this.sgApi = sendGrid("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");
+        this.sgApi = sendGrid("TEST-API-KEY");
         this.from_email = new helper.Email('feedback@team-mood.com');
         this.recipients = ["rohit_dang2006@yahoo.com"];
         this.subject = "Team Mood - Survey";

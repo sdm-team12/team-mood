@@ -1,11 +1,21 @@
-.DS_Store
-node_modules/
-npm-debug.log
-.idea/
-dump.rdb
-.vscode/
-public/*
+# Dependency directories
+node_modules
+<<<<<<< HEAD
+*.config.*
+=======
+config
+
+>>>>>>> 34842e1945de3fb4c90c542c9fdcce9957202f01
+# Build/Generate directories
+build
 dist
-coverage/
-.nyc_output/
-yarn.lock
+
+# Log directories/files
+logs
+*.log*
+
+# Optional npm cache directory
+.npm
+
+# Ignore files
+.DS_Store

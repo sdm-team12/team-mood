@@ -73,8 +73,15 @@ app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
 
 // Start the server
-app.listen(port, () => {
+server = app.listen(port, () => {
     console.log('Server is running on http://localhost:8000');
 });
 
+function stop() {
+  server.close();
+}
+
+
 module.exports = app
+module.exports.stop = stop;
+

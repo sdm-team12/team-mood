@@ -15,3 +15,7 @@ describe('Login API', function() {
          .end(done);
   });
 });
+
+after(() => {
+  app.stop();
+})

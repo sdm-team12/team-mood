@@ -98,8 +98,6 @@ export default class Dashboard extends Component {
     }}>
       
         <CardTitle
-          title="Dashboard"
-          subtitle="User Happiness Index."
         />
         
         {this.props.secretData && <CardText style={{ fontSize: '16px', color: 'green' }}>Hello, {this.props.secretData} {}</CardText>

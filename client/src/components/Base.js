@@ -2,15 +2,11 @@ import React, { PropTypes, Component } from 'react';
 import { Link, IndexLink } from 'react-router';
 import axios from 'axios';
 import Auth from '../modules/Auth';
-// import FacebookLogin from './facebook-login';
 
 import RaisedButton from 'material-ui/RaisedButton';
 import AppBar from 'material-ui/AppBar';
-// import IconButton from 'material-ui/IconButton';
 import FlatButton from 'material-ui/FlatButton';
-// import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
-// import Drawer from 'material-ui/Drawer';
-// import MenuItem from 'material-ui/MenuItem';
+
 
 const styles = {
   margin: 5,
@@ -90,7 +86,6 @@ export default class Base extends Component {
             <div className="top-bar-right">
               {/* <Link to="/signup"><RaisedButton label="Sign Up" primary={true} style={styles} /></Link> */}
               <Link to="/login"><RaisedButton label="Login"  style={styles} /></Link>
-              {/* <FacebookLogin />   */}
             </div>
           )
           }

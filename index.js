@@ -77,3 +77,4 @@ app.listen(port, () => {
     console.log('Server is running on http://localhost:8000');
 });
 
+module.exports = app

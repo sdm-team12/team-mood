@@ -62,6 +62,9 @@
     "nodemon": "^1.11.0",
     "style-loader": "^0.13.0",
     "webpack": "^2.7.0",
-    "webpack-cli": "^3.1.2"
+    "webpack-cli": "^3.1.2",
+    "chai": "^3.2.0",
+    "chai-http": "^1.0.0",
+    "supertest": "^3.0.0"
   }
 }

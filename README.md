@@ -21,9 +21,16 @@ In another bash window, optionally use "npm run bundle" to have WebPack monitor 
 
 FRAMEWORK
 -Universal (Server-side rendering)
--Local & Facebook login (via Passport)
+-Local login (via Passport)
 -Redux w/ Thunk
 -MongoDb & Mongoose
 -Express server
 -Webpack
 -Material UI
+-MOCHA CHAI
+
+
+
+To Use Docker 
+
+Clone the Repo and use "docker-compose build && docker-compose up" and it should start on port 8000.

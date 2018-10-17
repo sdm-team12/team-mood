@@ -60,7 +60,7 @@ router.post('/emailSurvey', async(req, res) => {
             to: 'rohit.dang@icloud.com',
             from: 'feedback@team-mood.com',
             subject: 'Survey: How happy are you?',
-            html: '<html> <body><div style="text-align: center;"><h3>Hi Rohit!</h3><p>This is a reminder for you to fill the happiness levels.</p><p>Please click <a href="http://localhost:8000/">here</a> to do so.</p><br><p>Thank you for your contribution.</p><div><p>Regards,</p><p>Team Mood Research Team</p></div></div></body></html>',
+            html: '<html> <body><div style="text-align: center;"><h3>Hi Rohit!</h3><p>This is a reminder for you to fill the happiness levels.</p><p>Please click <a href="http://team-mood.herokuapp.com/">here</a> to do so.</p><br><p>Thank you for your contribution.</p><div><p>Regards,</p><p>Team Mood Research Team</p></div></div></body></html>',
         };
         const response = sgMail.send(msg);
 

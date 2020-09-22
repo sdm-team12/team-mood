@@ -1,4 +1,6 @@
-# mern-starter
+# Team Mood
+
+The purpose of this app is to regularly check on the self-reported level of happiness of team members and their perception of the happiness of the team. This data will be collected over time and correlated against other measures to see if other measures are a useful (highly correlated) metric for team happiness. This will be a tool used as part of a long-term research project on high performing teams.
 Boilerplate: Passport-local login w/ JWT validation && Facebook login options. Mongo, Mongoose, Express, React, React-Router, Redux, Webpack, Passport, MaterialUI
 
 
